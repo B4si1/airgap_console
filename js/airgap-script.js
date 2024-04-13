@@ -10,7 +10,7 @@ let upperCase = false;
 let input = []; // WIP
 
 import {toggleMode} from './darkmode-script.js';
-import {openNavMenu} from './navigation-script.js';
+// import {openNavMenu} from './navigation-script.js';
 
 // Keyboard Listeners
 
@@ -102,11 +102,11 @@ document.addEventListener('keyup',function(e){
         x.classList.remove('pressed')
     }
     
-    navigation(e)
+    // navigation(e)
     clearDisplay()
     changeMode()
     updateHelp()
-    openNavMenu()
+    // openNavMenu()
     // updateScreenInfo()
     // red()
 })
@@ -241,12 +241,12 @@ function colorKeys(value){
     }
 }
 
-function navigation(e){
+// function navigation(e){
 
-    if(contentReader.innerText == 'navpage2' || contentReader.innerText == 'page2' || contentReader.innerText == 'nav page2'){
-        e.view.location.href = './page2.html'
-    }
-}
+//     if(contentReader.innerText == 'navpage2' || contentReader.innerText == 'page2' || contentReader.innerText == 'nav page2'){
+//         e.view.location.href = './page2.html'
+//     }
+// }
 
 function noDisplayKeys(e, x){
     switch(x){
@@ -288,7 +288,6 @@ function updateHelp(){
         Clear Displays:     'cls' or 'del'
         Calculate:          '1+2' then Enter
         Darkmode:           'light' or 'dark'
-        Navigation:         'page2'
         
         Red display for keys that are not showen above.
 
