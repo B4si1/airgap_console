@@ -345,7 +345,7 @@ function updateHelp(){
         Help:               'help' for help menu
         
         *'xyz' means type
-        Red display for keys that are not showen above.
+        Keys that are not showen above will be displayed here in red (numpad or g keys).
 
         </pre>`;
         contentReader.innerText = 'Help selected'
