@@ -188,7 +188,7 @@ function displayPokemonInfo(info){
     });
     
     // helpContainer.innerHTML += `\nBASE \t\t\tSTAT\n`
-    helpContainer.innerHTML += `\nHP : \t\t\t${info.order}\n`;
+    helpContainer.innerHTML += `\nHP : \t\t\t${info.stats[0].base_stat}\n`;
     helpContainer.innerHTML += `Weight : \t\t${info.weight}\n`;
     helpContainer.innerHTML += `Height : \t\t${info.height}\n`;
     helpContainer.innerHTML += `Attack : \t\t${info.stats[1].base_stat}\n`;
