@@ -338,6 +338,7 @@ function updateHelp(){
         helpContainer.innerHTML = `
         <pre>
         Current functions :
+        
         Clear Displays:     'cls' or 'del'
         Pokémon Search:     'poke' then enter name or id then Enter
         Calculate:          '1+2' then Enter
