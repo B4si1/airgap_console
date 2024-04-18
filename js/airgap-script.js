@@ -339,7 +339,7 @@ function updateHelp(){
         <pre>
         Current functions :
         Clear Displays:     'cls' or 'del'
-        Pokemon Search:     'poke' then enter name or id then Enter
+        Pokémon Search:     'poke' then enter name or id then Enter
         Calculate:          '1+2' then Enter
         Darkmode:           'light' or 'dark'
         Help:               'help' for help menu
