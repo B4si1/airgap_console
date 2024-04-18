@@ -102,16 +102,11 @@ document.addEventListener('keyup',function(e){
         x.classList.remove('pressed')
     }
     
-    // navigation(e)
     clearDisplay()
     changeMode()
     updateHelp()
-    // openNavMenu()
-    // updateScreenInfo()
-    // red()
+   
 })
-
-// Keyboard Functions
 
 function calculator(){
     let expression = contentReader.innerText;
@@ -241,13 +236,6 @@ function colorKeys(value){
     }
 }
 
-// function navigation(e){
-
-//     if(contentReader.innerText == 'navpage2' || contentReader.innerText == 'page2' || contentReader.innerText == 'nav page2'){
-//         e.view.location.href = './page2.html'
-//     }
-// }
-
 function noDisplayKeys(e, x){
     switch(x){
         case " ":
@@ -276,8 +264,6 @@ function highlightButtons(items, state){
         };
     }
 }
-
-// Screen Info Functions
 
 function updateHelp(){
     if(textParse('help', contentReader.innerText)){
@@ -321,8 +307,6 @@ function updateContainer(x, y, sx, sy, orient, bx, by, plat, plat2, mobile, lang
     <span class="color">${x}</span>px
     <span class="color">${y}</span>px`
 
-    // cursor.style.top = `${e.y-5}px`;
-    // cursor.style.left =`${e.x-5}px`;
     cursortext.style.top = `${y - 30}px`;
     cursortext.style.left =`${x + 5}px`;
 
@@ -330,8 +314,6 @@ function updateContainer(x, y, sx, sy, orient, bx, by, plat, plat2, mobile, lang
     cursortext.classList.add('display-cursor'); 
     
 };
-
-// Mouse Listeners
 
 document.addEventListener('mousedown', function(e){
     switch(e.button){
