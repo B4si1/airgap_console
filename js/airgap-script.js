@@ -5,6 +5,8 @@ const screenContainer = document.getElementById('screen-container');
 const cursor = document.getElementById('cursor');
 const cursortext = document.getElementById('cursortext');
 
+contentReader.innerText = 'Type "help" for more info..';
+
 let upperCase = false;
 
 let input = []; // WIP
@@ -71,7 +73,12 @@ document.addEventListener('keydown',function(e){
         break;
         case 13: // Enter
         if(e.code == 'Enter'){
-            calculator()    //Enter Function
+            if(isPoke){
+                getPoke(contentReader.innerText.slice(17))
+            }else{
+                calculator()    //Enter Function
+            }
+            
         }
         break;
         case 32: //Space
@@ -105,6 +112,7 @@ document.addEventListener('keyup',function(e){
     clearDisplay()
     changeMode()
     updateHelp()
+    enterPokeSearchState()
    
 })
 
@@ -141,6 +149,65 @@ function changeMode(){
         contentReader.innerText = "(Light Mode Activated)"
     }
     
+}
+
+let isPoke = false;
+
+function getPoke(input){
+    helpContainer.innerHTML = input+"..poke";
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon/${input}`;
+
+    fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        displayPokemonInfo(data);
+        })
+    .catch(error => {
+        helpContainer.innerHTML += " Pokémon not found!";
+    });
+
+    isPoke = false;
+}
+
+function displayPokemonInfo(info){
+    helpContainer.style.color = 'yellow'
+    helpContainer.classList.add("poke-flex")
+    const poke_data = info.types;
+    helpContainer.innerHTML = `Name ID : \t\t${info.name.toUpperCase()} #${info.id}`;
+    
+    helpContainer.innerHTML += `<img src="${info.sprites.front_default}"></img>`
+
+    helpContainer.innerHTML += `TYPE(s) : \t\t`
+    poke_data.forEach(element => {
+        helpContainer.innerHTML += `${element.type.name.toUpperCase()} `;
+    });
+    
+    // helpContainer.innerHTML += `\nBASE \t\t\tSTAT\n`
+    helpContainer.innerHTML += `\nHP : \t\t\t${info.order}\n`;
+    helpContainer.innerHTML += `Weight : \t\t${info.weight}\n`;
+    helpContainer.innerHTML += `Height : \t\t${info.height}\n`;
+    helpContainer.innerHTML += `Attack : \t\t${info.stats[1].base_stat}\n`;
+    helpContainer.innerHTML += `Defense : \t\t${info.stats[2].base_stat}\n`;
+    helpContainer.innerHTML += `Special Attack : \t${info.stats[3].base_stat}\n`;
+    helpContainer.innerHTML += `Special Defense : \t${info.stats[4].base_stat}\n`;
+    helpContainer.innerHTML += `Speed : \t\t${info.stats[5].base_stat}\n`;
+
+}
+
+
+// Pokemon Search : 15 
+
+function enterPokeSearchState(){
+    if (textParse('poke', contentReader.innerHTML)){
+        contentReader.innerText = 'Pokemon Search : ';
+        contentReader.style.color = 'yellow';
+        isPoke = true;
+    }
 }
 
 function textParse(conditionText, sourceText){
@@ -272,9 +339,12 @@ function updateHelp(){
         <pre>
         Current functions :
         Clear Displays:     'cls' or 'del'
+        Pokemon Search:     'poke' then enter name or id then Enter
         Calculate:          '1+2' then Enter
         Darkmode:           'light' or 'dark'
+        Help:               'help' for help menu
         
+        *'xyz' means type
         Red display for keys that are not showen above.
 
         </pre>`;
