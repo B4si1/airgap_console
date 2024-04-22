@@ -15,5 +15,6 @@ AirGap Console is a versatile keylogger application that not only captures scree
 - **Calculator**: Built-in calculator for quick calculations without leaving the application.
 - **Poké Search**: Integrated Poké Search into the treminal.
 - **Help**: typing 'help' will display the functions currently available.
+- **Mobile Unfriendly**: recomended for desktop/labtop browser viewing.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bd7bd613-d7c9-48b7-9891-c5baba20db9c/deploy-status)](https://app.netlify.com/sites/airgapconsole/deploys)
